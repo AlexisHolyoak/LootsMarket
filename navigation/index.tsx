@@ -8,3 +8,7 @@ export default function RootNavigation() {
 
   return user ? <UserStack /> : <AuthStack />;
 }
+export { default as StoreScreen } from "../screens/StoreScreen";
+export { default as FollowingScreen } from "../screens/FollowingScreen";
+export { default as LotteryScreen } from "../screens/LotteryScreen";
+export { default as LiveScreen } from "../screens/LiveScreen";

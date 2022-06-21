@@ -9,7 +9,7 @@ import {
   KeyboardAvoidingView,
   Flex,
 } from "native-base";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { FontAwesome } from "@expo/vector-icons";
 import { StyleSheet } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -59,9 +59,7 @@ const SignUpScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
           value={value.email}
           onChangeText={(text) => setValue({ ...value, email: text })}
           placeholder="Correo electrónico"
-          InputRightElement={
-            <Icon name="envelope" size={16} color="muted.400" />
-          }
+          InputRightElement={<FontAwesome name="envelope" size={16} />}
         />
         <Input
           variant={"underlined"}
@@ -70,7 +68,7 @@ const SignUpScreen: React.FC<StackScreenProps<any>> = ({ navigation }) => {
           value={value.password}
           onChangeText={(text) => setValue({ ...value, password: text })}
           placeholder="Contraseña"
-          InputRightElement={<Icon name="lock" size={16} color="muted.400" />}
+          InputRightElement={<FontAwesome name={"lock"} size={16} />}
           mt="10"
         />
       </Flex>
