@@ -1,10 +1,10 @@
 import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import HomeScreen from "../screens/Home";
 import { FontAwesome } from "@expo/vector-icons";
-import { View } from "native-base";
+import { Box, Button, View } from "native-base";
 import AnimatedTabBar, {
   TabsConfig,
   BubbleTabBarItemConfig,
@@ -13,6 +13,8 @@ import FollowingScreen from "../screens/FollowingScreen";
 import LiveScreen from "../screens/LiveScreen";
 import LotteryScreen from "../screens/LotteryScreen";
 import StoreScreen from "../screens/StoreScreen";
+import UserProfileScreen from "../screens/UserProfileScreen";
+import { Pressable } from "react-native";
 const Stack = createStackNavigator();
 const tabs: TabsConfig<BubbleTabBarItemConfig> = {
   Siguiendo: {
@@ -81,9 +83,10 @@ function TabBar() {
   const Tab: any = createBottomTabNavigator();
   return (
     <Tab.Navigator
+      screenOptions={{ headerShown: false }}
       tabBar={(props) => (
         //add shadow to view
-        <View style={{ position: "absolute", bottom: 0, left: 0, right: 0 }}>
+        <View flex={0.13}>
           <AnimatedTabBar
             tabs={tabs}
             {...props}
@@ -116,12 +119,35 @@ export default function UserStack() {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="TabBar"
-        screenOptions={{
-          headerShown: false,
-        }}
+        screenOptions={({ route, navigation }) => ({
+          headerShown: true,
+          headerRight: () => (
+            <Box marginRight={5} flexDirection="row">
+              <Box marginRight={3}>
+                <Pressable>
+                  <FontAwesome name={"envelope"} />
+                </Pressable>
+              </Box>
+              <Pressable onPress={() => navigation.navigate("UserProfile")}>
+                <FontAwesome name={"user"} />
+              </Pressable>
+            </Box>
+          ),
+        })}
       >
-        <Stack.Screen name="TabBar" component={TabBar} />
+        <Stack.Screen
+          name="TabBar"
+          component={TabBar}
+          options={{ headerShown: true, headerTitle: "QHATU" }}
+        />
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen
+          name="UserProfile"
+          component={UserProfileScreen}
+          options={() => ({
+            title: "QHATU",
+          })}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

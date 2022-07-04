@@ -20,6 +20,7 @@ export default {
       supportsTablet: true,
     },
     android: {
+      package: "com.alexisholyoak.LootsMarket",
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
         backgroundColor: "#FFFFFF",

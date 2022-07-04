@@ -12,3 +12,4 @@ export { default as StoreScreen } from "../screens/StoreScreen";
 export { default as FollowingScreen } from "../screens/FollowingScreen";
 export { default as LotteryScreen } from "../screens/LotteryScreen";
 export { default as LiveScreen } from "../screens/LiveScreen";
+export { default as UserProfileScreen } from "../screens/UserProfileScreen";
